@@ -1,9 +1,8 @@
 # Introduction
-This documentation explains the API testing suite for the restful-booker.herokuapp.com which contains a Postman collection and environment designed to facilitate API testing for various functionalities related to Booking management. The API allows operations such as fetching any existing booking, creating a new booking, retrieving created booking, generating token for authorization, updating booking, fetching the updating booking and delete the booking dynamically. 
+This documentation explains the API testing suite for the restful-booker.herokuapp.com which contains a Postman collection and environment designed to facilitate API testing for various functionalities related to Booking management. The API allows operations such as fetching any existing booking, creating a new booking, retrieving created booking, generating token for authorization, updating booking, fetching the updating booking and delete the booking dynamically and also used import dataset from csv file for create a booking and get the booking successfully.
 
 # Summary    
-I have completed an all these API of Create Booking Info, Get Booking Info, Post Token, Update Booking Info, Get Updated Booking Info and Delete Booking Info using
-https://restful-booker.herokuapp.com/   
+I have completed all these API of Create Booking Info, Get Booking Info, Post Token, Update Booking Info, Get Updated Booking Info and Delete Booking Info using https://restful-booker.herokuapp.com/   
 <p align="center">
   <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/Summary_in_Command.png?raw=true" />
 </p>
@@ -12,6 +11,21 @@ https://restful-booker.herokuapp.com/
 Here in this API testing Booking managements are viewed and different tests were performed for different HTTP methods like POST, GET, DELETE, PUT.
 
 **Summary:** Total 6 Test Scripts and 17 assertions were done. All of them passed with 0 failed tests and 0 skipped tests. The number of iteration was 1.
+
+# Summary    
+I also created booking info by importing a dataset from CSV filen and used all these API of Create Booking, Get Booking using https://restful-booker.herokuapp.com/   
+<p align="center">
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/4.png?raw=true" />
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/1.png?raw=true" />
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/2.png?raw=true" />
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/3.png?raw=true" />
+
+</p>
+ 
+
+Here in this API testing Booking managements are viewed and different tests were performed for different HTTP methods like POST, GET.
+
+**Summary:** Total 56 assertions were done. All of them passed with 0 failed tests. The number of iteration was 7.
 
 
 # Requirements  
@@ -217,7 +231,7 @@ pm.environment.set("check_out", today.add(2,'d').format("YYYY-MM-DD"))
 }
 
 ```
-**Dynamically Token Generation in Header**
+####Dynamically Token Generation in Header**
 ```bash
 Cookie		token={{token_id}}
 
@@ -364,7 +378,7 @@ else if(status_code==503){
 })}
 
 ```
-**Dynamically Token Generation in Header**
+####Dynamically Token Generation in Header**
 ```bash
 Cookie		token={{token_id}}
 
