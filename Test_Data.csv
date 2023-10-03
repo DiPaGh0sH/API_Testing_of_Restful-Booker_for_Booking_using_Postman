@@ -1,8 +1,8 @@
 first_name,last_name,total_price,deposite_paid,check_in,check_out,additional_needs
-Dipa,Ghosh,5000,true,2023-10-03,2023-10-04,Dinner
-Sanjoy,Nath,6000,false,2023-10-04,2023-10-05,Snacks
-Durjoy,Ghosh,5500,false,2023-10-05,2023-10-06,Chocolate
-Moumita,Chowdhury,7000,true,2023-10-06,2023-10-07,Towel
-Sadnan,Huda,6500,false,2023-10-07,2023-10-08,Breakfast
-Mithun,Sutradhar,4000,false,2023-10-08,2023-10-09,Shower Gel
-Puja,Ghosh,5000,true,2023-10-09,2023-10-10,Coffee
+Dipa,Ghosh,5000,TRUE,2023-10-03,2023-10-04,Dinner
+Sanjoy,Nath,6000,FALSE,2023-10-04,2023-10-05,Snacks
+Durjoy,Ghosh,5500,FALSE,2023-10-05,2023-10-06,Chocolate
+Moumita,Chowdhury,7000,TRUE,2023-10-06,2023-10-07,Towel
+Sadnan,Huda,6500,FALSE,2023-10-07,2023-10-08,Breakfast
+Mithun,Sutradhar,4000,FALSE,2023-10-08,2023-10-09,Shower Gel
+Puja,Ghosh,5000,TRUE,2023-10-09,2023-10-10,Coffee
