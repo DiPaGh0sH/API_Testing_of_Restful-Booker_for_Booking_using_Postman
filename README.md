@@ -1,20 +1,17 @@
-# API_Testing_of_Restful-Booker_for_Booking_using_Postman
-A variety of HTTP methods (POST, GET, DELETE, and PUT) and importing data from a csv file are being used to test a collection of APIs for Booking at restful-booker.herokuapp.com using Postman.
-
 # Introduction
-This documentation explains the API testing suite for the thetestingworldapi.com which contains a Postman collection and environment designed to facilitate API testing for various functionalities related to management details of student. The API allows operations such as fetching student details, creating new students, retrieving specific students, adding technical skills, and managing student addresses. 
+This documentation explains the API testing suite for the restful-booker.herokuapp.com which contains a Postman collection and environment designed to facilitate API testing for various functionalities related to Booking management. The API allows operations such as fetching any existing booking, creating a new booking, retrieving created booking, generating token for authorization, updating booking, fetching the updating booking and delete the booking dynamically. 
 
-# Summery    
-I have Completed an API test of Get number of total Students, Create a Student, Get Specific Created Student, Create Technical Skills, Create Student's Address and finally Get Student Details
-https://thetestingworldapi.com/   
+# Summary    
+I have completed an all these API of Create Booking Info, Get Booking Info, Post Token, Update Booking Info, Get Updated Booking Info and Delete Booking Info using
+https://restful-booker.herokuapp.com/   
 <p align="center">
   <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/Summary_in_Command.png?raw=true" />
 </p>
  
 
-Here in this API student details viewed and different tests were performed like GET, POST, PUT, DELETE.
+Here in this API testing Booking managements are viewed and different tests were performed for different HTTP methods like POST, GET, DELETE, PUT.
 
-**Summary:** Test Scripts 6 and Total 20 assertions were done. All of them passed with 0 skipped tests. The number of iteration was 1.
+**Summary:** Total 6 Test Scripts and 17 assertions were done. All of them passed with 0 failed tests and 0 skipped tests. The number of iteration was 1.
 
 
 # Requirements  
@@ -26,759 +23,352 @@ https://www.postman.com/
 https://nodejs.org/en/    
 
 
-
 # Assertions Details    
-#### Get Student
-**Test Script**
+#### Create Booking Info
+**Tests Script**
 ```bash
 var jsonData = pm.response.json()
-var ststuscode = pm.response.code
-console.log(jsonData.length)
-
-if(ststuscode==200){
-var jsonData = pm.response.json()
-pm.test(" 200 OK", function(){
-    pm.response.to.have.status(200);
-});
-}
-else if(ststuscode==404){
-
-    pm.test("Not Found", function(){
-    pm.response.to.have.status(404);
-    });
-}
-
-else if(ststuscode==200){
-
-    pm.test("OK", function(){
-    pm.response.to.have.status(200);
-    });
-}
-
-else if(ststuscode==201){
-
-    pm.test("Created", function(){
-    pm.response.to.have.status(201);
-    });
-}
-
-else if(ststuscode==202){
-
-    pm.test("Accepted", function(){
-    pm.response.to.have.status(202);
-    });
-}
-
-else if(ststuscode==400){
-
-    pm.test("Bad Request", function(){
-    pm.response.to.have.status(400);
-    });
-}
-
-else if(ststuscode==401){
-
-    pm.test("Unauthorized", function(){
-    pm.response.to.have.status(401);
-    });
-}
-
-else if(ststuscode==403){
-
-    pm.test("Fordidden", function(){
-    pm.response.to.have.status(403);
-    });
-}
-
-else if(ststuscode==405){
-
-    pm.test("Method Not Allowed", function(){
-    pm.response.to.have.status(405);
-    });
-}
-
-else if(ststuscode==500){
-
-    pm.test("Internal Server Error", function(){
-    pm.response.to.have.status(500);
-    });
-}
-
-else if(ststuscode==501){
-
-    pm.test("Not Implimented", function(){
-    pm.response.to.have.status(501);
-    });
-}
-
-else if(ststuscode==502){
-
-    pm.test("Bad Gateway", function(){
-    pm.response.to.have.status(502);
-    });
-}
-
-else if(ststuscode==503){
-
-    pm.test("Service Unavailable", function(){
-    pm.response.to.have.status(503);
-    });
-}
-
-else{
-    pm.test("Something Else!!!!")
-}     
+pm.environment.set("booking_id", jsonData.bookingid)
+console.log(jsonData.bookingid)
 ```
-#### Create Student
-**Body**
-```bash   
-{
-"first_name": "{{firstName}}", 
-"middle_name": "{{middleName}}", 
-"last_name": "{{lastName}}", 
-"date_of_birth": "{{date_of_birth}}" 
-}
-```
-
 **Pre-Request Scripts**
 
 ```bash   
-var firstName = pm.variables.replaceIn("{{$randomFirstName}}")
-console.log("First Name Value:  "+ firstName)
-pm.environment.set("firstName",firstName)
+var firstname = pm.variables.replaceIn("{{$randomFirstName}}")
+console.log("First Name: "+firstname)
+pm.environment.set("first_name",firstname)
 
-var middleName = pm.variables.replaceIn("{{$randomLastName}}")
-console.log("Middle Name Value:  "+ middleName)
-pm.environment.set("middleName",middleName)
+var lastname = pm.variables.replaceIn("{{$randomLastName}}")
+console.log("Last Name: "+lastname)
+pm.environment.set("last_name",lastname)
 
-var lastName = pm.variables.replaceIn("{{$randomLastName}}")
-console.log("Last Name Value:  "+ lastName)
-pm.environment.set("lastName",lastName)
+var totalprice = pm.variables.replaceIn("{{$randomInt}}")
+console.log("Total Price: "+totalprice)
+pm.environment.set("total_price",totalprice)
+
+var depositpaid = pm.variables.replaceIn("{{$randomBoolean}}")
+console.log("Deposition of Payment: "+depositpaid)
+pm.environment.set("deposit_paid",depositpaid)
+
+var additional = pm.variables.replaceIn("{{$randomProduct}}")
+console.log("Additional Needs: "+additional)
+pm.environment.set("additional_needs",additional)
 
 const moment = require('moment')
 const today = moment()
 console.log(today.format("YYYY-MM-DD"))
-pm.environment.set("date_of_birth",today.add(1,'d').format("YYYY-MM-DD"))
+pm.environment.set("check_in", today.add(2,'d').format("YYYY-MM-DD"))
+pm.environment.set("check_out", today.add(2,'d').format("YYYY-MM-DD"))
+
 ```
-**Test Script**
-```bash
-var jsonData = pm.response.json()
-pm.environment.set("id", jsonData.id)
-
-var ststuscode = pm.response.code
-console.log(ststuscode)
-
-if(ststuscode==201){
-var jsonData = pm.response.json()
-pm.test(" 201 Created", function(){
-    pm.response.to.have.status(201);
-});
-}
-else if(ststuscode==404){
-
-    pm.test("Not Found", function(){
-    pm.response.to.have.status(404);
-    });
-}
-
-else if(ststuscode==200){
-
-    pm.test("OK", function(){
-    pm.response.to.have.status(200);
-    });
-}
-
-
-
-else if(ststuscode==202){
-
-    pm.test("Accepted", function(){
-    pm.response.to.have.status(202);
-    });
-}
-
-else if(ststuscode==400){
-
-    pm.test("Bad Request", function(){
-    pm.response.to.have.status(400);
-    });
-}
-
-else if(ststuscode==401){
-
-    pm.test("Unauthorized", function(){
-    pm.response.to.have.status(401);
-    });
-}
-
-else if(ststuscode==403){
-
-    pm.test("Fordidden", function(){
-    pm.response.to.have.status(403);
-    });
-}
-
-else if(ststuscode==405){
-
-    pm.test("Method Not Allowed", function(){
-    pm.response.to.have.status(405);
-    });
-}
-
-else if(ststuscode==500){
-
-    pm.test("Internal Server Error", function(){
-    pm.response.to.have.status(500);
-    });
-}
-
-else if(ststuscode==501){
-
-    pm.test("Not Implimented", function(){
-    pm.response.to.have.status(501);
-    });
-}
-
-else if(ststuscode==502){
-
-    pm.test("Bad Gateway", function(){
-    pm.response.to.have.status(502);
-    });
-}
-
-else if(ststuscode==503){
-
-    pm.test("Service Unavailable", function(){
-    pm.response.to.have.status(503);
-    });
-}
-
-else{
-    pm.test("Something Else!!!!")
-}
-});
-```   
-#### Get Specific Student  
-**Test Script**
-```bash
-var ststuscode = pm.response.code
-console.log(ststuscode)
-
-if(ststuscode==200){
-var jsonData = pm.response.json()
-pm.test("Status code is 200", function(){
-    pm.response.to.have.status(200);
-});
-
-pm.test("ID Validate", function(){
-    pm.expect(jsonData.data.id).to.eql(pm.environment.get("id"));
-
-});
-
-pm.test("First Name Validate", function(){
-    pm.expect(jsonData.data.first_name).to.eql(pm.environment.get("firstName"));
-
-});
-
-pm.test("Middle Name Validate", function(){
-    pm.expect(jsonData.data.middle_name).to.eql(pm.environment.get("middleName"));
-
-});
-
-pm.test("Last Name Validate", function(){
-    pm.expect(jsonData.data.last_name).to.eql(pm.environment.get("lastName"));
-
-});
-
-pm.test("Date of Birth Validate", function(){
-    pm.expect(jsonData.data.date_of_birth).to.eql(pm.environment.get("date_of_birth"));
-
-});
-
-}
-
-else if(ststuscode==404){
-
-    pm.test("Not Found", function(){
-    pm.response.to.have.status(404);
-    });
-}
-
-else if(ststuscode==200){
-
-    pm.test("OK", function(){
-    pm.response.to.have.status(200);
-    });
-}
-
-else if(ststuscode==201){
-
-    pm.test("Created", function(){
-    pm.response.to.have.status(201);
-    });
-}
-
-else if(ststuscode==202){
-
-    pm.test("Accepted", function(){
-    pm.response.to.have.status(202);
-    });
-}
-
-else if(ststuscode==400){
-
-    pm.test("Bad Request", function(){
-    pm.response.to.have.status(400);
-    });
-}
-
-else if(ststuscode==401){
-
-    pm.test("Unauthorized", function(){
-    pm.response.to.have.status(401);
-    });
-}
-
-else if(ststuscode==403){
-
-    pm.test("Fordidden", function(){
-    pm.response.to.have.status(403);
-    });
-}
-
-else if(ststuscode==405){
-
-    pm.test("Method Not Allowed", function(){
-    pm.response.to.have.status(405);
-    });
-}
-
-else if(ststuscode==500){
-
-    pm.test("Internal Server Error", function(){
-    pm.response.to.have.status(500);
-    });
-}
-
-else if(ststuscode==501){
-
-    pm.test("Not Implimented", function(){
-    pm.response.to.have.status(501);
-    });
-}
-
-else if(ststuscode==502){
-
-    pm.test("Bad Gateway", function(){
-    pm.response.to.have.status(502);
-    });
-}
-
-else if(ststuscode==503){
-
-    pm.test("Service Unavailable", function(){
-    pm.response.to.have.status(503);
-    });
-}
-
-else{
-    pm.test("Something Else!!!!")
-}
-
-```   
-#### Create Technical Skills
 **Body**
 ```bash
-{ 
-"id": 1, 
-"language": [ 
-"sample string 1", 
-"sample string 2" 
-], 
-"yearexp": "sample string 2", 
-"lastused": "sample string 3", 
-"st_id": {{id}}
-}
-```
-**Test Script**
-```bash
-var ststuscode = pm.response.code
-console.log(ststuscode)
-
-if(ststuscode==200){
-var jsonData = pm.response.json()
-pm.test(" 200 OK", function(){
-    pm.response.to.have.status(200);
-});
-}
-else if(ststuscode==404){
-
-    pm.test("Not Found", function(){
-    pm.response.to.have.status(404);
-    });
-}
-
-else if(ststuscode==200){
-
-    pm.test("OK", function(){
-    pm.response.to.have.status(200);
-    });
-}
-
-else if(ststuscode==201){
-
-    pm.test("Created", function(){
-    pm.response.to.have.status(201);
-    });
-}
-
-else if(ststuscode==202){
-
-    pm.test("Accepted", function(){
-    pm.response.to.have.status(202);
-    });
-}
-
-else if(ststuscode==400){
-
-    pm.test("Bad Request", function(){
-    pm.response.to.have.status(400);
-    });
-}
-
-else if(ststuscode==401){
-
-    pm.test("Unauthorized", function(){
-    pm.response.to.have.status(401);
-    });
-}
-
-else if(ststuscode==403){
-
-    pm.test("Fordidden", function(){
-    pm.response.to.have.status(403);
-    });
-}
-
-else if(ststuscode==405){
-
-    pm.test("Method Not Allowed", function(){
-    pm.response.to.have.status(405);
-    });
-}
-
-else if(ststuscode==500){
-
-    pm.test("Internal Server Error", function(){
-    pm.response.to.have.status(500);
-    });
-}
-
-else if(ststuscode==501){
-
-    pm.test("Not Implimented", function(){
-    pm.response.to.have.status(501);
-    });
-}
-
-else if(ststuscode==502){
-
-    pm.test("Bad Gateway", function(){
-    pm.response.to.have.status(502);
-    });
-}
-
-else if(ststuscode==503){
-
-    pm.test("Service Unavailable", function(){
-    pm.response.to.have.status(503);
-    });
-}
-
-else{
-    pm.test("Something Else!!!!")
-}
-```
-
-#### Create Student Address 
-**Body**
-```bash
-{ 
-"Permanent_Address": { 
-"House_Number": "sample string 1",
-"City": "sample string 2",
- "State": "sample string 3", 
-"Country": "sample string 4",
-"PhoneNumber": [ 
-{ 
-"Std_Code": "sample string 1",
-"Home": "sample string 2",
- "Mobile": "sample string 3" 
-},
-{ 
-"Std_Code": "sample string 1",
-"Home": "sample string 2", 
-"Mobile": "sample string 3" 
-} 
-] 
-},
-"stId": {{id}}
-}
-
-```
-**Test Script**
-```bash
-
-
-var ststuscode = pm.response.code
-console.log(ststuscode)
-
-if(ststuscode==200){
-var jsonData = pm.response.json()
-pm.test(" 200 OK", function(){
-    pm.response.to.have.status(200);
-});
-
-pm.test("Status Validate", function(){
-    pm.expect(jsonData.status).to.eql("true");
-
-});
-
-pm.test("Massage Validate", function(){
-    pm.expect(jsonData.msg).to.eql("Add  data success");
-
-});
-
-}
-else if(ststuscode==404){
-
-    pm.test("Not Found", function(){
-    pm.response.to.have.status(404);
-    });
-}
-
-else if(ststuscode==200){
-
-    pm.test("OK", function(){
-    pm.response.to.have.status(200);
-    });
-}
-
-else if(ststuscode==201){
-
-    pm.test("Created", function(){
-    pm.response.to.have.status(201);
-    });
-}
-
-else if(ststuscode==202){
-
-    pm.test("Accepted", function(){
-    pm.response.to.have.status(202);
-    });
-}
-
-else if(ststuscode==400){
-
-    pm.test("Bad Request", function(){
-    pm.response.to.have.status(400);
-    });
-}
-
-else if(ststuscode==401){
-
-    pm.test("Unauthorized", function(){
-    pm.response.to.have.status(401);
-    });
-}
-
-else if(ststuscode==403){
-
-    pm.test("Fordidden", function(){
-    pm.response.to.have.status(403);
-    });
-}
-
-else if(ststuscode==405){
-
-    pm.test("Method Not Allowed", function(){
-    pm.response.to.have.status(405);
-    });
-}
-
-else if(ststuscode==500){
-
-    pm.test("Internal Server Error", function(){
-    pm.response.to.have.status(500);
-    });
-}
-
-else if(ststuscode==501){
-
-    pm.test("Not Implimented", function(){
-    pm.response.to.have.status(501);
-    });
-}
-
-else if(ststuscode==502){
-
-    pm.test("Bad Gateway", function(){
-    pm.response.to.have.status(502);
-    });
-}
-
-else if(ststuscode==503){
-
-    pm.test("Service Unavailable", function(){
-    pm.response.to.have.status(503);
-    });
-}
-
-else{
-    pm.test("Something Else!!!!")
-}
-
-```  
-
-#### Final Student Details 
-**Test Script**
-```bash
-
-
-var ststuscode = pm.response.code
-console.log(ststuscode)
-
-if(ststuscode==200){
-var jsonData = pm.response.json()
-pm.test(" 200 OK", function(){
-    pm.response.to.have.status(200);
-});
-
-pm.test("Language Field Validation", function () {
-    pm.expect(pm.response.json().data.TechnicalDetails[0].language).to.be.an('array').that.includes.members(["sample string 1", "sample string 2"]);
-});
-
-
-pm.test("Year of Experience (yearexp) Validation", function () {
-    pm.expect(pm.response.json().data.TechnicalDetails[0].yearexp).to.be.a('string');
-});
-
-pm.test("House Number Validation", function () {
-    pm.expect(pm.response.json().data.Address[0].Permanent_Address.House_Number).to.be.a('string');
-});
-
-pm.test("City Validation", function () {
-    pm.expect(pm.response.json().data.Address[0].Permanent_Address.City).to.be.a('string');
-});
-
-pm.test("Country Validation", function () {
-    pm.expect(pm.response.json().data.Address[0].Permanent_Address.Country).to.be.a('string');
-});
-
-pm.test("Mobile Numbers Validation", function () {
-    const mobileNumbers = pm.response.json().data.Address[0].Permanent_Address.PhoneNumber;
-    pm.expect(mobileNumbers).to.be.an('array');
-    mobileNumbers.forEach((number) => {
-        pm.expect(number.Mobile).to.be.a('string');
-    });
-});
-
-
-pm.test("Current Address Validation", function () {
-    pm.expect(pm.response.json().data.Address[0].Current_Address).to.be.null;
-});
-
-
-
-}
-else if(ststuscode==404){
-
-    pm.test("Not Found", function(){
-    pm.response.to.have.status(404);
-    });
-}
-
-else if(ststuscode==200){
-
-    pm.test("OK", function(){
-    pm.response.to.have.status(200);
-    });
-}
-
-else if(ststuscode==201){
-
-    pm.test("Created", function(){
-    pm.response.to.have.status(201);
-    });
-}
-
-else if(ststuscode==202){
-
-    pm.test("Accepted", function(){
-    pm.response.to.have.status(202);
-    });
-}
-
-else if(ststuscode==400){
-
-    pm.test("Bad Request", function(){
-    pm.response.to.have.status(400);
-    });
-}
-
-else if(ststuscode==401){
-
-    pm.test("Unauthorized", function(){
-    pm.response.to.have.status(401);
-    });
-}
-
-else if(ststuscode==403){
-
-    pm.test("Fordidden", function(){
-    pm.response.to.have.status(403);
-    });
-}
-
-else if(ststuscode==405){
-
-    pm.test("Method Not Allowed", function(){
-    pm.response.to.have.status(405);
-    });
-}
-
-else if(ststuscode==500){
-
-    pm.test("Internal Server Error", function(){
-    pm.response.to.have.status(500);
-    });
-}
-
-else if(ststuscode==501){
-
-    pm.test("Not Implimented", function(){
-    pm.response.to.have.status(501);
-    });
-}
-
-else if(ststuscode==502){
-
-    pm.test("Bad Gateway", function(){
-    pm.response.to.have.status(502);
-    });
-}
-
-else if(ststuscode==503){
-
-    pm.test("Service Unavailable", function(){
-    pm.response.to.have.status(503);
-    });
-}
-
-else{
-    pm.test("Something Else!!!!")
+{
+	"firstname" : "{{first_name}}",
+	"lastname" : "{{last_name}}",
+	"totalprice" : {{total_price}},
+	"depositpaid" : {{deposit_paid}},
+	"bookingdates" : {
+    	"checkin" : "{{check_in}}",
+    	"checkout" : "{{check_out}}"
+	},
+	"additionalneeds" : "{{additional_needs}}"
 }
 ```   
+#### Get Booking Info  
+**Tests Script**
+```bash
+var status_code = pm.response.code
+console.log(status_code)
+if(status_code == 200){
+pm.test("200 ; STATUS : SUCCESS", function () {
+    pm.response.to.have.status(200);
+});
+var jsonData = pm.response.json()
+pm.test("First Name Validation", function () {
+    pm.expect(jsonData.firstname).to.eql(pm.environment.get("first_name"));
+});
+pm.test("Last Name Validation", function () {
+    pm.expect(jsonData.lastname).to.eql(pm.environment.get("last_name"));
+});
+pm.test("Total Price", function () {
+    pm.expect(jsonData.totalprice).to.eql(Number(pm.environment.get("total_price")));
+});
+pm.test("Deposition of Payment" , function () {
+    pm.expect(String(jsonData.depositpaid)).to.eql(pm.environment.get("deposit_paid"));
+});
+pm.test("Date of Check In" ,function () {
+    pm.expect(jsonData.bookingdates.checkin).to.eql(pm.environment.get("check_in"));
+});
+pm.test("Date of Checking Out", function() {
+    pm.expect(jsonData.bookingdates.checkout).to.eql(pm.environment.get("check_out"));
+});
+pm.test("Additional Needs", function() {
+    pm.expect(jsonData.additionalneeds).to.eql(pm.environment.get("additional_needs"));
+})}
+else if(status_code==201){
+    pm.test("201 ; STATUS : CREATED", function () {
+    pm.response.to.have.status(201);
+})}
+else if(status_code==202){
+    pm.test("202 ; STATUS : ACCEPTED", function () {
+    pm.response.to.have.status(202);
+})}
+else if(status_code==400){
+    pm.test("400 ; STATUS : BAD REQUEST", function () {
+    pm.response.to.have.status(400);
+})}
+else if(status_code==401){
+    pm.test("401 ; STATUS : UNAUTHORIZED", function () {
+    pm.response.to.have.status(401);
+})}
+else if(status_code==402){
+    pm.test("402 ; STATUS : PAYMENT REQUIRED", function () {
+    pm.response.to.have.status(402);
+})}
+else if(status_code==403){
+    pm.test("403 ; STATUS : FORBIDDEN", function () {
+    pm.response.to.have.status(403);
+})}
+else if(status_code==404){
+    pm.test("404 ; STATUS : NOT FOUND", function () {
+    pm.response.to.have.status(404);
+})}
+else if(status_code==405){
+    pm.test("405 ; STATUS : METHOD NOT ALLOWED", function () {
+    pm.response.to.have.status(405);
+})}
+else if(status_code==500){
+    pm.test("500 ; STATUS : INTERNAL SERVER ERROR", function () {
+    pm.response.to.have.status(500);
+})}
+else if(status_code==501){
+    pm.test("501 ; STATUS : NOT IMPLEMENTED", function () {
+    pm.response.to.have.status(501);
+})}
+else if(status_code==502){
+    pm.test("502 ; STATUS : BAD GATEWAY", function () {
+    pm.response.to.have.status(502);
+})}
+else if(status_code==503){
+    pm.test("503 ; STATUS : SERVICE UNAVAILABLE", function () {
+    pm.response.to.have.status(503);
+})}
+
+```
+#### Token
+**Tests Script**
+```bash
+var tokendata = pm.response.json()
+pm.environment.set("token_id", tokendata.token)
+
+```
+**Body**
+```bash
+{
+	"username": "admin",
+	"password": "password123"
+}
+
+```
+#### Update Booking Info
+**Pre-Request Scripts**
+
+```bash   
+var firstname = pm.variables.replaceIn("{{$randomFirstName}}")
+console.log("First Name: "+firstname)
+pm.environment.set("first_name",firstname)
+
+var lastname = pm.variables.replaceIn("{{$randomLastName}}")
+console.log("Last Name: "+lastname)
+pm.environment.set("last_name",lastname)
+
+var totalprice = pm.variables.replaceIn("{{$randomInt}}")
+console.log("Total Price: "+totalprice)
+pm.environment.set("total_price",totalprice)
+
+var depositpaid = pm.variables.replaceIn("{{$randomBoolean}}")
+console.log("Deposition of Payment: "+depositpaid)
+pm.environment.set("deposit_paid",depositpaid)
+
+var additional = pm.variables.replaceIn("{{$randomProduct}}")
+console.log("Additional Needs: "+additional)
+pm.environment.set("additional_needs",additional)
+
+const moment = require('moment')
+const today = moment()
+console.log(today.format("YYYY-MM-DD"))
+pm.environment.set("check_in", today.add(2,'d').format("YYYY-MM-DD"))
+pm.environment.set("check_out", today.add(2,'d').format("YYYY-MM-DD"))
+
+```
+**Body**
+```bash
+{
+	"firstname" : "{{update_first_name}}",
+	"lastname" : "{{update_last_name}}",
+	"totalprice" : {{update_total_price}},
+	"depositpaid" : {{update_deposit_paid}},
+	"bookingdates" : {
+    	"checkin" : "{{update_check_in}}",
+    	"checkout" : "{{update_check_out}}"
+	},
+	"additionalneeds" : "{{update_additional_needs}}"
+}
+
+```
+**Dynamically Token Generation in Header**
+```bash
+Cookie		token={{token_id}}
+
+```   
+#### Get Last Updated Booking Info  
+**Tests Script**
+```bash
+var status_code = pm.response.code
+console.log(status_code)
+if(status_code==200){
+pm.test("200 ; STATUS : SUCCESS", function () {
+    pm.response.to.have.status(200);
+});
+var jsonData = pm.response.json()
+pm.test("First Name Validation", function () {
+    pm.expect(jsonData.firstname).to.eql(pm.environment.get("update_first_name"));
+});
+pm.test("Last Name Validation", function () {
+    pm.expect(jsonData.lastname).to.eql(pm.environment.get("update_last_name"));
+});
+pm.test("Total Price", function () {
+    pm.expect(jsonData.totalprice).to.eql(Number(pm.environment.get("update_total_price")));
+});
+pm.test("Deposition of Payment" , function () {
+    pm.expect(String(jsonData.depositpaid)).to.eql(pm.environment.get("update_deposit_paid"));
+});
+pm.test("Date of Check In" ,function () {
+    pm.expect(jsonData.bookingdates.checkin).to.eql(pm.environment.get("update_check_in"));
+});
+pm.test("Date of Checking Out", function() {
+    pm.expect(jsonData.bookingdates.checkout).to.eql(pm.environment.get("update_check_out"));
+});
+pm.test("Additional Needs", function() {
+    pm.expect(jsonData.additionalneeds).to.eql(pm.environment.get("update_additional_needs"));
+})}
+else if(status_code==201){
+    pm.test("201 ; STATUS : CREATED", function () {
+    pm.response.to.have.status(201);
+})}
+else if(status_code==202){
+    pm.test("202 ; STATUS : ACCEPTED", function () {
+    pm.response.to.have.status(202);
+})}
+else if(status_code==400){
+    pm.test("400 ; STATUS : BAD REQUEST", function () {
+    pm.response.to.have.status(400);
+})}
+else if(status_code==401){
+    pm.test("401 ; STATUS : UNAUTHORIZED", function () {
+    pm.response.to.have.status(401);
+})}
+else if(status_code==402){
+    pm.test("402 ; STATUS : PAYMENT REQUIRED", function () {
+    pm.response.to.have.status(402);
+})}
+else if(status_code==403){
+    pm.test("403 ; STATUS : FORBIDDEN", function () {
+    pm.response.to.have.status(403);
+})}
+else if(status_code==404){
+    pm.test("404 ; STATUS : NOT FOUND", function () {
+    pm.response.to.have.status(404);
+})}
+else if(status_code==405){
+    pm.test("405 ; STATUS : METHOD NOT ALLOWED", function () {
+    pm.response.to.have.status(405);
+})}
+else if(status_code==500){
+    pm.test("500 ; STATUS : INTERNAL SERVER ERROR", function () {
+    pm.response.to.have.status(500);
+})}
+else if(status_code==501){
+    pm.test("501 ; STATUS : NOT IMPLEMENTED", function () {
+    pm.response.to.have.status(501);
+})}
+else if(status_code==502){
+    pm.test("502 ; STATUS : BAD GATEWAY", function () {
+    pm.response.to.have.status(502);
+})}
+else if(status_code==503){
+    pm.test("503 ; STATUS : SERVICE UNAVAILABLE", function () {
+    pm.response.to.have.status(503);
+})}
+
+```
+#### Delete Booking Info  
+**Tests Script**
+```bash
+var status_code = pm.response.code
+console.log(status_code)
+
+if(status_code==200){
+pm.test("200 ; STATUS : SUCCESS", function () {
+    pm.response.to.have.status(200);
+});}
+else if(status_code==201){
+    pm.test("201 ; STATUS : CREATED", function () {
+    pm.response.to.have.status(201);
+})}
+
+else if(status_code==202){
+    pm.test("202 ; STATUS : ACCEPTED", function () {
+    pm.response.to.have.status(202);
+})}
+else if(status_code==400){
+    pm.test("400 ; STATUS : BAD REQUEST", function () {
+    pm.response.to.have.status(400);
+})}
+else if(status_code==401){
+    pm.test("401 ; STATUS : UNAUTHORIZED", function () {
+    pm.response.to.have.status(401);
+})}
+else if(status_code==402){
+    pm.test("402 ; STATUS : PAYMENT REQUIRED", function () {
+    pm.response.to.have.status(402);
+})}
+else if(status_code==403){
+    pm.test("403 ; STATUS : FORBIDDEN", function () {
+    pm.response.to.have.status(403);
+})}
+else if(status_code==404){
+    pm.test("404 ; STATUS : NOT FOUND", function () {
+    pm.response.to.have.status(404);
+})}
+else if(status_code==405){
+    pm.test("405 ; STATUS : METHOD NOT ALLOWED", function () {
+    pm.response.to.have.status(405);
+})}
+else if(status_code==500){
+    pm.test("500 ; STATUS : INTERNAL SERVER ERROR", function () {
+    pm.response.to.have.status(500);
+})}
+else if(status_code==501){
+    pm.test("501 ; STATUS : NOT IMPLEMENTED", function () {
+    pm.response.to.have.status(501);
+})}
+else if(status_code==502){
+    pm.test("502 ; STATUS : BAD GATEWAY", function () {
+    pm.response.to.have.status(502);
+})}
+else if(status_code==503){
+    pm.test("503 ; STATUS : SERVICE UNAVAILABLE", function () {
+    pm.response.to.have.status(503);
+})}
+
+```
+**Dynamically Token Generation in Header**
+```bash
+Cookie		token={{token_id}}
+
+```
 
 # Create Test Suites   
 
@@ -804,20 +394,28 @@ npm install -g newman-reporter-html
 ```bash
 npm install -g newman-reporter-htmlextra    
 ```
-#### Run Command      
-- newman run “Collection Link” -e “Path”/EnvironmentName.json -r cli,html    
+#### Report Run Command      
+- newman run CollectionName.json -e EnvironmentName.json -r cli,html    
 **or**    
-- newman run “Collection Link” -e “Path”/EnvironmentName.json -r cli,htmlextra
+- newman run CollectionName.json -e EnvironmentName.json -r cli,htmlextra
 
-- #### Newman File htmlextra
+#### Newman Report File htmlextra
  <p align="center">
-  <img src="https://github.com/SHANJIDA-HRIDE/API-Testing-with-Postman/assets/62147630/03353ac2-38ce-4e4e-86f0-cb47439efc0a"/>
- <img src="https://github.com/SHANJIDA-HRIDE/API-Testing-with-Postman/assets/62147630/914a4944-b488-4ff5-bdad-56fe5c22b0d2"/>
- <img src="https://github.com/SHANJIDA-HRIDE/API-Testing-with-Postman/assets/62147630/d684ba12-f2d1-4888-a6b7-9946c1a0757e"/>
-  <img src="https://github.com/SHANJIDA-HRIDE/API-Testing-with-Postman/assets/62147630/db9a87fe-fc49-4a5a-870e-554b11139f85"/>
-  <img src="https://github.com/SHANJIDA-HRIDE/API-Testing-with-Postman/assets/62147630/9e7d6f07-4f43-416e-9b4e-3e62a36fb010"/>
-    <img src="https://github.com/SHANJIDA-HRIDE/API-Testing-with-Postman/assets/62147630/ced1cb77-1461-40cb-9fb4-619c332712ce"/>
-    <img src="https://github.com/SHANJIDA-HRIDE/API-Testing-with-Postman/assets/62147630/0d7d4b6d-70f3-4ba4-80f6-02c7a1c05758"/></p>
-
-
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/1.png?raw=true"/>
+ <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/2.png?raw=true"/>
+ <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/3.png?raw=true"/>
+    <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/4.png?raw=true"/>
+    <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/5.png?raw=true"/>
+    <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/6.png?raw=true"/>
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/7.png?raw=true"/>
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/8.png?raw=true"/>
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/9.png?raw=true"/>
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/10.png?raw=true"/>
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/11.png?raw=true"/>
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/12.png?raw=true"/>
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/13.png?raw=true"/>
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/14.png?raw=true"/>
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/15.png?raw=true"/>
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/16.png?raw=true"/>
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/All%20SS%20of%20Report/17.png?raw=true"/></p>
 
