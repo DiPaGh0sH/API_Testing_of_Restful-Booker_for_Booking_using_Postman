@@ -16,24 +16,56 @@ Here in this API testing Booking managements are viewed and different tests were
 I also created booking info by importing a dataset from CSV filen and used all these API of Create Booking, Get Booking using https://restful-booker.herokuapp.com/   
 <p align="center">
   <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/4.png?raw=true" /></p>
-CSV File:
-<p align="center">
-<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/1.png?raw=true" /></p>
-Imported CSV File with 7 Iteration:
-<p align="center">
-<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/2.png?raw=true" /></p>
-Previewing Data that imported from CSV file:
-<p align="center">
-<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/3.png?raw=true" /></p>
-
-# Execution Result of all iterations from CSV File:
- 
 
 Here in this API testing Booking managements are viewed and different tests were performed for different HTTP methods like POST, GET.
 
 **Summary:** Total 56 assertions were done. All of them passed with 0 failed tests. The number of iteration was 7.
 
+**CSV File:**
 
+<p align="center">
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/1.png?raw=true" /></p>
+**Imported CSV File with 7 Iteration:**
+
+<p align="center">
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/2.png?raw=true" /></p>
+**Previewing Data that imported from CSV file:**
+
+<p align="center">
+<img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/3.png?raw=true" /></p>
+
+# Execution Result of all iterations from CSV File:
+
+**Iteration : 01 **
+
+<p align="center">
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/Iteration1.png?raw=true" /></p>
+**Iteration : 02 **
+
+<p align="center">
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/Iteration2.png?raw=true" /></p>
+**Iteration : 03 **
+
+<p align="center">
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/Iteration3.png?raw=true" /></p>
+**Iteration : 04 **
+
+<p align="center">
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/Iteration4.png?raw=true" /></p>
+**Iteration : 05 **
+
+<p align="center">
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/Iteration5.png?raw=true" /></p>
+**Iteration : 06 **
+
+<p align="center">
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/Iteration6.png?raw=true" /></p>
+**Iteration : 07 **
+
+<p align="center">
+  <img src="https://github.com/DiPaGh0sH/API_Testing_of_Restful-Booker_for_Booking_using_Postman/blob/main/newman/SS%20of%20CSV%20file%20Importing/Iteration7.png?raw=true" /></p>
+
+ 
 # Requirements  
 **Java**  
 https://www.oracle.com/java/technologies/downloads/   
